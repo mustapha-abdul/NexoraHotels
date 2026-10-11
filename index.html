@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101710">
+  <title>NEXORA HOTELS | Luxury & Comfort</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+    :root {
+      --green: #18251d;
+      --green-light: #263b2d;
+      --gold: #c8a96b;
+      --cream: #f6f3ec;
+      --white: #fff;
+      --text: #222720;
+      --muted: #74786f;
+      --border: #e6e0d3;
+      --max: 1200px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+      overflow-x: clip;
+    }
+
+    body {
+      min-width: 320px;
+      width: 100%;
+      overflow-x: clip;
+      background: var(--white);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    section {
+      padding: 100px 0;
+      scroll-margin-top: 80px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 76px);
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+    }
+
+    p {
+      color: var(--muted);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 49px;
+      padding: 13px 25px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #172017;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    .btn-outline {
+      border-color: #fff;
+      background: transparent;
+      color: #fff;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--green);
+      color: #fff;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 78px;
+    }
+
+    .logo {
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: #f0f0e9;
+      font-size: 12px;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, .25);
+      background: transparent;
+      color: var(--gold);
+      font-size: 25px;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: 690px;
+      background:
+        linear-gradient(90deg, rgba(10, 20, 13, .84), rgba(10, 20, 13, .25)),
+        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=90') center / cover no-repeat;
+      color: #fff;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: var(--max);
+      margin: auto;
+    }
+
+    .hero .eyebrow {
+      color: #e0c58e;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: #e0c58e;
+    }
+
+    .hero p {
+      max-width: 550px;
+      margin-bottom: 30px;
+      color: #f1f1ed;
+      font-size: 16px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* BOOKING BAR */
+
+    .booking-bar {
+      position: relative;
+      z-index: 5;
+      margin-top: -45px;
+    }
+
+    .booking-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      align-items: end;
+      gap: 15px;
+      padding: 25px;
+      background: #fff;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .12);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .form-group label {
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      min-width: 0;
+      min-height: 45px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 0;
+      outline: none;
+      background: #fff;
+      color: var(--text);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .booking-form .btn {
+      min-height: 45px;
+      padding-inline: 18px;
+      white-space: nowrap;
+    }
+
+    /* INTRO */
+
+    .intro {
+      padding-top: 115px;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .intro-image img {
+      width: 100%;
+      aspect-ratio: 5 / 4;
+      object-fit: cover;
+    }
+
+    .intro-content h2 {
+      margin-bottom: 22px;
+    }
+
+    .intro-content p {
+      margin-bottom: 17px;
+    }
+
+    .intro-content .btn {
+      margin-top: 12px;
+    }
+
+    /* ROOMS */
+
+    .rooms {
+      background: var(--cream);
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow {
+      display: block;
+    }
+
+    .section-heading p {
+      max-width: 600px;
+      margin: 15px auto 0;
+    }
+
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 23px;
+    }
+
+    .room-card {
+      min-width: 0;
+      overflow: hidden;
+      background: #fff;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .room-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, .1);
+    }
+
+    .room-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .room-info {
+      padding: 24px;
+    }
+
+    .room-info h3 {
+      margin-bottom: 12px;
+      font-size: 25px;
+    }
+
+    .room-info p {
+      margin-bottom: 17px;
+      font-size: 14px;
+    }
+
+    .room-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0;
+      padding: 15px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .room-price {
+      margin-bottom: 18px;
+      color: var(--green);
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+    }
+
+    .room-price small {
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+    }
+
+    .room-info .btn {
+      width: 100%;
+    }
+
+    /* AMENITIES */
+
+    .amenities {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .amenities .section-heading p {
+      color: #c5c9c1;
+    }
+
+    .amenities .section-heading h2 {
+      color: #fff;
+    }
+
+    .amenity-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .amenity {
+      padding: 28px 20px;
+      border: 1px solid rgba(255, 255, 255, .17);
+      text-align: center;
+    }
+
+    .amenity .icon {
+      display: block;
+      margin-bottom: 15px;
+      color: var(--gold);
+      font-size: 28px;
+    }
+
+    .amenity h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .amenity p {
+      color: #c5c9c1;
+      font-size: 13px;
+    }
+
+    /* EXPERIENCE BANNER */
+
+    .experience {
+      background:
+        linear-gradient(rgba(13, 25, 16, .68), rgba(13, 25, 16, .7)),
+        url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1800&q=85') center / cover no-repeat;
+      color: #fff;
+      text-align: center;
+    }
+
+    .experience-content {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .experience h2 {
+      margin-bottom: 20px;
+    }
+
+    .experience p {
+      margin-bottom: 28px;
+      color: #f0f0ec;
+    }
+
+    /* GALLERY */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 230px;
+      gap: 14px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      background: #eee;
+    }
+
+    .gallery-item.tall {
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    /* TESTIMONIAL */
+
+    .testimonial {
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .testimonial blockquote {
+      max-width: 800px;
+      margin: 20px auto;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(23px, 3.5vw, 36px);
+      line-height: 1.5;
+    }
+
+    .testimonial .author {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+    }
+
+    .contact-content h2 {
+      margin: 12px 0 20px;
+    }
+
+    .contact-content>p {
+      margin-bottom: 25px;
+    }
+
+    .contact-detail {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-detail strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--green);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .contact-detail span {
+      color: var(--muted);
+      overflow-wrap: anywhere;
+    }
+
+    .contact-form {
+      padding: 30px;
+      border: 1px solid var(--border);
+      background: var(--cream);
+    }
+
+    .contact-form h3 {
+      margin-bottom: 22px;
+      font-size: 27px;
+    }
+
+    .contact-form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .contact-form .btn {
+      width: 100%;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 40px 0 25px;
+      background: var(--green);
+      color: #fff;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    footer h3,
+    footer h4 {
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    footer p,
+    footer li {
+      color: #c5c9c1;
+      font-size: 13px;
+    }
+
+    footer ul {
+      display: grid;
+      gap: 9px;
+      list-style: none;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, .15);
+      text-align: center;
+    }
+
+    /* FLOATING WHATSAPP */
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 18px;
+      background: #25d366;
+      color: #06250f;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, .2);
+    }
+
+    /* TABLETS */
+
+    @media (max-width: 1000px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+      }
+
+      .booking-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .booking-form .btn {
+        width: 100%;
+      }
+
+      .intro-grid {
+        gap: 30px;
+      }
+
+      .room-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .amenity-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-grid {
+        gap: 25px;
+      }
+
+      .footer-grid {
+        gap: 22px;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 680px) {
+      html {
+        scroll-padding-top: 70px;
+      }
+
+      .container {
+        width: calc(100% - 36px);
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .navbar {
+        min-height: 68px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 68px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1001;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        height: calc(100vh - 68px);
+        height: calc(100dvh - 68px);
+        padding: 20px 24px 35px;
+        overflow-y: auto;
+        background: var(--green);
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: transform .25s ease, opacity .25s ease, visibility .25s ease;
+      }
+
+      .nav-links.open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+      }
+
+      .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .12);
+        color: #fff;
+        font-size: 15px;
+      }
+
+      .nav-links .btn {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .hero {
+        min-height: 570px;
+        min-height: min(700px, calc(100svh - 68px));
+        background-position: 60% center;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 10vw, 57px);
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .booking-bar {
+        margin-top: 0;
+        padding-top: 20px;
+        background: var(--cream);
+      }
+
+      .booking-form {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+        padding: 20px;
+        box-shadow: none;
+      }
+
+      .booking-form .btn {
+        width: 100%;
+      }
+
+      .intro {
+        padding-top: 60px;
+      }
+
+      .intro-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 30px;
+      }
+
+      .intro-image img {
+        aspect-ratio: 5 / 4;
+      }
+
+      .room-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .room-info {
+        padding: 20px;
+      }
+
+      .amenity-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .amenity {
+        padding: 22px 12px;
+      }
+
+      .amenity h3 {
+        font-size: 17px;
+      }
+
+      .amenity p {
+        font-size: 12px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: clamp(125px, 38vw, 210px);
+        gap: 8px;
+      }
+
+      .gallery-item.tall {
+        grid-row: span 2;
+      }
+
+      .contact-form {
+        padding: 20px 16px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        font-size: 16px;
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+      }
+
+      .whatsapp {
+        right: 12px;
+        bottom: 12px;
+        min-height: 44px;
+        padding: 10px 14px;
+      }
+    }
+
+    /* SMALL PHONES */
+
+    @media (max-width: 380px) {
+      .container {
+        width: calc(100% - 28px);
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .booking-form,
+      .contact-form {
+        padding: 16px 12px;
+      }
+
+      .amenity {
+        padding: 18px 8px;
+      }
+
+      .amenity h3 {
+        font-size: 15px;
+      }
+
+      .gallery-grid {
+        grid-auto-rows: 120px;
+      }
+
+      .whatsapp {
+        right: 9px;
+        bottom: 9px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+      <a href="#home" class="logo">NEXORA <span>HOTELS</span></a>
+
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#rooms">Rooms & Suites</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a class="btn" href="#booking">Book a Stay</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="eyebrow">An exceptional stay awaits</span>
+        <h1>WHERE LUXURY<br>MEETS <span>COMFORT.</span></h1>
+        <p>
+          Discover thoughtfully designed spaces, memorable hospitality,
+          and a relaxing escape from the ordinary.
+        </p>
+        <div class="hero-buttons">
+          <a href="#booking" class="btn">Reserve Your Stay</a>
+          <a href="#rooms" class="btn btn-outline">Explore Rooms</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-bar" id="booking">
+      <div class="container">
+        <form class="booking-form" id="bookingForm">
+          <div class="form-group">
+            <label for="checkin">CHECK-IN</label>
+            <input type="date" id="checkin" required>
+          </div>
+
+          <div class="form-group">
+            <label for="checkout">CHECK-OUT</label>
+            <input type="date" id="checkout" required>
+          </div>
+
+          <div class="form-group">
+            <label for="guests">GUESTS</label>
+            <select id="guests" required>
+              <option value="1 guest">1 Guest</option>
+              <option value="2 guests" selected>2 Guests</option>
+              <option value="3 guests">3 Guests</option>
+              <option value="4 guests">4 Guests</option>
+              <option value="5+ guests">5+ Guests</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="roomType">ROOM TYPE</label>
+            <select id="roomType" required>
+              <option value="Deluxe Room">Deluxe Room</option>
+              <option value="Executive Suite">Executive Suite</option>
+              <option value="Presidential Suite">Presidential Suite</option>
+            </select>
+          </div>
+
+          <button class="btn" type="submit">Check Availability</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="intro" id="about">
+      <div class="container intro-grid">
+        <div class="intro-image">
+          <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1000&q=85"
+            alt="Elegant hotel interior" loading="lazy">
+        </div>
+
+        <div class="intro-content">
+          <span class="eyebrow">Welcome to Nexora</span>
+          <h2>A PLACE TO<br>FEEL AT HOME.</h2>
+          <p>
+            Enjoy a welcoming atmosphere, carefully considered
+            interiors, and a hospitality experience designed around you.
+          </p>
+          <p>
+            Whether you are visiting for business, celebrating a
+            special occasion, or simply taking time to relax, we
+            want every part of your stay to feel effortless.
+          </p>
+          <a href="#amenities" class="btn">Discover Our Hotel</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="rooms" id="rooms">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Stay your way</span>
+          <h2>ROOMS & SUITES</h2>
+          <p>
+            Find the right space for your next visit. Contact the hotel
+            to confirm current rates and room availability.
+          </p>
+        </div>
+
+        <div class="room-grid">
+          <article class="room-card">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=85"
+              alt="Deluxe hotel bedroom" loading="lazy">
+            <div class="room-info">
+              <h3>Deluxe Room</h3>
+              <p>A comfortable, elegant room for a relaxing stay.</p>
+              <div class="room-features">
+                <span>Comfortable bed</span>
+                <span>Private bathroom</span>
+              </div>
+              <div class="room-price">Enquire for rate</div>
+              <a href="#booking" class="btn room-book" data-room="Deluxe Room">Book This Room</a>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=85"
+              alt="Executive hotel suite" loading="lazy">
+            <div class="room-info">
+              <h3>Executive Suite</h3>
+              <p>Extra space and comfort for business or leisure.</p>
+              <div class="room-features">
+                <span>Spacious layout</span>
+                <span>Seating area</span>
+              </div>
+              <div class="room-price">Enquire for rate</div>
+              <a href="#booking" class="btn room-book" data-room="Executive Suite">Book This Room</a>
+            </div>
+          </article>
+
+          <article class="room-card">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=85"
+              alt="Luxury presidential suite" loading="lazy">
+            <div class="room-info">
+              <h3>Presidential Suite</h3>
+              <p>A refined accommodation option for a special stay.</p>
+              <div class="room-features">
+                <span>Premium space</span>
+                <span>Luxury interiors</span>
+              </div>
+              <div class="room-price">Enquire for rate</div>
+              <a href="#booking" class="btn room-book" data-room="Presidential Suite">Book This Room</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="amenities" id="amenities">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Designed around you</span>
+          <h2>THE LITTLE EXTRAS</h2>
+          <p>
+            Replace these sample amenities with the facilities your
+            hotel actually provides.
+          </p>
+        </div>
+
+        <div class="amenity-grid">
+          <article class="amenity">
+            <span class="icon">⌂</span>
+            <h3>Comfortable Rooms</h3>
+            <p>Relax in a thoughtfully designed space.</p>
+          </article>
+
+          <article class="amenity">
+            <span class="icon">♨</span>
+            <h3>Dining</h3>
+            <p>Describe your restaurant and dining options.</p>
+          </article>
+
+          <article class="amenity">
+            <span class="icon">◇</span>
+            <h3>Relaxation</h3>
+            <p>Highlight your wellness or leisure facilities.</p>
+          </article>
+
+          <article class="amenity">
+            <span class="icon">◎</span>
+            <h3>Guest Service</h3>
+            <p>Tell guests how your team can assist them.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience">
+      <div class="container experience-content">
+        <span class="eyebrow">Make it memorable</span>
+        <h2>YOUR NEXT ESCAPE<br>STARTS HERE.</h2>
+        <p>
+          Plan a comfortable stay, explore our accommodation options,
+          and contact our team to discuss your visit.
+        </p>
+        <a href="#booking" class="btn">Plan Your Stay</a>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">A glimpse inside</span>
+          <h2>THE HOTEL EXPERIENCE</h2>
+          <p>Explore the spaces and atmosphere of our hotel.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item tall">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=85"
+              alt="Hotel exterior" loading="lazy">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=900&q=85"
+              alt="Hotel lobby" loading="lazy">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=900&q=85"
+              alt="Hotel swimming pool" loading="lazy">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=85"
+              alt="Guest bedroom" loading="lazy">
+          </div>
+          <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=85"
+              alt="Suite interior" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial">
+      <div class="container">
+        <span class="eyebrow">A welcoming experience</span>
+        <blockquote>
+          “A great stay begins with thoughtful details and a warm welcome.”
+        </blockquote>
+        <p class="author">The Nexora Hospitality Promise</p>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-content">
+          <span class="eyebrow">We are here to help</span>
+          <h2>LET'S PLAN<br>YOUR STAY.</h2>
+          <p>
+            Have questions about rooms, availability, or special
+            arrangements? Send us an enquiry.
+          </p>
+
+          <div class="contact-detail">
+            <strong>Address</strong>
+            <span>NEXORA@gmail.com</span>
+          </div>
+
+          <div class="contact-detail">
+            <strong>Phone</strong>
+            <span>08051669399</span>
+          </div>
+
+          <div class="contact-detail">
+            <strong>Email</strong>
+            <span>NEXORA@gmail.com</span>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <h3>Send an Enquiry</h3>
+
+          <div class="form-group">
+            <label for="guestName">Full name</label>
+            <input id="guestName" type="text" placeholder="Your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="guestPhone">Phone number</label>
+            <input id="guestPhone" type="tel" placeholder="Your phone number" required>
+          </div>
+
+          <div class="form-group">
+            <label for="guestMessage">How can we help?</label>
+            <textarea id="guestMessage" placeholder="Tell us about your stay"></textarea>
+          </div>
+
+          <button type="submit" class="btn">Enquire on WhatsApp</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#home" class="logo">NEXORA <span>HOTELS</span></a>
+          <p style="margin-top:15px">
+            Hospitality, comfort, and memorable stays.
+          </p>
+        </div>
+
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#rooms">Rooms & Suites</a></li>
+            <li><a href="#amenities">Amenities</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Guest Services</h4>
+          <ul>
+            <li><a href="#booking">Reservations</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Nexora Hotels. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#contact" class="whatsapp" id="whatsappLink">WhatsApp Us</a>
+
+  <script>
+    /* MOBILE MENU */
+
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('.nav-links');
+
+    function closeMenu() {
+      navigation.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation');
+      menuButton.textContent = '☰';
+    }
+
+    menuButton.addEventListener('click', () => {
+      const open = navigation.classList.toggle('open');
+
+      document.body.classList.toggle('menu-open', open);
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.setAttribute(
+        'aria-label',
+        open ? 'Close navigation' : 'Open navigation'
+      );
+      menuButton.textContent = open ? '×' : '☰';
+    });
+
+    navigation.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 680) closeMenu();
+    });
+
+    /* FOOTER YEAR */
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* BOOKING DATE VALIDATION */
+
+    const checkin = document.getElementById('checkin');
+    const checkout = document.getElementById('checkout');
+
+    function localDateString(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    const today = localDateString(new Date());
+    checkin.min = today;
+    checkout.min = today;
+
+    checkin.addEventListener('change', () => {
+      checkout.min = checkin.value || today;
+
+      if (checkout.value && checkout.value <= checkin.value) {
+        checkout.value = '';
+      }
+    });
+
+    /* SELECT ROOM FROM ROOM CARD */
+
+    document.querySelectorAll('.room-book').forEach(button => {
+      button.addEventListener('click', () => {
+        const room = button.dataset.room;
+        document.getElementById('roomType').value = room;
+      });
+    });
+
+    /* WHATSAPP SETTINGS
+       Replace with the hotel's actual WhatsApp number.
+       Nigerian format example: 2348012345678
+       Use digits only, without + or spaces.
+    */
+
+    const WHATSAPP_NUMBER = '2348051669399';
+
+    function sendWhatsApp(message) {
+      if (WHATSAPP_NUMBER === '2348000000000') {
+        alert('Please replace WHATSAPP_NUMBER in the HTML with your hotel WhatsApp number.');
+        return;
+      }
+
+      const url = 'https://wa.me/' + WHATSAPP_NUMBER +
+        '?text=' + encodeURIComponent(message);
+
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
+    /* BOOKING REQUEST */
+
+    document.getElementById('bookingForm').addEventListener('submit', event => {
+      event.preventDefault();
+
+      if (!checkin.value || !checkout.value) {
+        alert('Please choose your check-in and check-out dates.');
+        return;
+      }
+
+      if (checkout.value <= checkin.value) {
+        alert('Check-out must be after check-in.');
+        checkout.focus();
+        return;
+      }
+
+      const guests = document.getElementById('guests').value;
+      const room = document.getElementById('roomType').value;
+
+      const message =
+        'Hello, I would like to enquire about a hotel reservation.\n\n' +
+        'Check-in: ' + checkin.value + '\n' +
+        'Check-out: ' + checkout.value + '\n' +
+        'Guests: ' + guests + '\n' +
+        'Room: ' + room + '\n\n' +
+        'Please confirm availability and the total price.';
+
+      sendWhatsApp(message);
+    });
+
+    /* GENERAL ENQUIRY */
+
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+
+      const name = document.getElementById('guestName').value.trim();
+      const phone = document.getElementById('guestPhone').value.trim();
+      const message = document.getElementById('guestMessage').value.trim();
+
+      if (!name || !phone) {
+        alert('Please enter your name and phone number.');
+        return;
+      }
+
+      sendWhatsApp(
+        'Hello Nexora Hotels, I have an enquiry.\n\n' +
+        'Name: ' + name + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Message: ' + (message || 'I would like more information about your hotel.')
+      );
+    });
+
+    /* WHATSAPP SHORTCUT */
+
+    document.getElementById('whatsappLink').addEventListener('click', event => {
+      event.preventDefault();
+      sendWhatsApp('Hello Nexora Hotels, I would like to enquire about accommodation.');
+    });
+  </script>
+
+</body>
+
+</html>
